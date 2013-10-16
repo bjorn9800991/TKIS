@@ -29,7 +29,7 @@
             My.Settings.Networks.AddRange(netKill.Networks.ToArray)
         End If
 
-        'My.Settings.Save()
+        My.Settings.Save()
 
     End Sub
 
