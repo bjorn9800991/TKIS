@@ -26,6 +26,8 @@ Partial Class MainForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lstNetworks = New System.Windows.Forms.ListBox()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.RemoveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.txtNetwork = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.btnAddNetwork = New System.Windows.Forms.Button()
@@ -47,13 +49,11 @@ Partial Class MainForm
         Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EmergencyTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.RemoveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.ctxmnuIcon.SuspendLayout()
-        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -71,8 +71,21 @@ Partial Class MainForm
         Me.lstNetworks.FormattingEnabled = True
         Me.lstNetworks.Location = New System.Drawing.Point(13, 38)
         Me.lstNetworks.Name = "lstNetworks"
+        Me.lstNetworks.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
         Me.lstNetworks.Size = New System.Drawing.Size(292, 95)
         Me.lstNetworks.TabIndex = 1
+        '
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RemoveToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 26)
+        '
+        'RemoveToolStripMenuItem
+        '
+        Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
+        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
+        Me.RemoveToolStripMenuItem.Text = "Remove"
         '
         'txtNetwork
         '
@@ -172,9 +185,11 @@ Partial Class MainForm
         '
         'lstPrograms
         '
+        Me.lstPrograms.ContextMenuStrip = Me.ContextMenuStrip1
         Me.lstPrograms.FormattingEnabled = True
         Me.lstPrograms.Location = New System.Drawing.Point(12, 38)
         Me.lstPrograms.Name = "lstPrograms"
+        Me.lstPrograms.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
         Me.lstPrograms.Size = New System.Drawing.Size(292, 95)
         Me.lstPrograms.TabIndex = 6
         '
@@ -237,19 +252,7 @@ Partial Class MainForm
         '
         'EmergencyTimer
         '
-        Me.EmergencyTimer.Interval = 600000
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RemoveToolStripMenuItem})
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(118, 26)
-        '
-        'RemoveToolStripMenuItem
-        '
-        Me.RemoveToolStripMenuItem.Name = "RemoveToolStripMenuItem"
-        Me.RemoveToolStripMenuItem.Size = New System.Drawing.Size(117, 22)
-        Me.RemoveToolStripMenuItem.Text = "Remove"
+        Me.EmergencyTimer.Interval = 60000
         '
         'MainForm
         '
@@ -263,6 +266,7 @@ Partial Class MainForm
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "MainForm"
         Me.Text = "TKIS - Task Killer In School"
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
@@ -270,7 +274,6 @@ Partial Class MainForm
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ctxmnuIcon.ResumeLayout(False)
-        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

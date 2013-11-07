@@ -8,14 +8,6 @@ Public Class SettingsDialog
         My.Settings.KillTimer = chkKillTimer.Checked
         My.Settings.SaveNetworksPrograms = chkSaveProgramsNetworks.Checked
 
-        My.Settings.Programs.Clear()
-        My.Settings.Networks.Clear()
-
-        If chkSaveProgramsNetworks.Checked Then
-            My.Settings.Programs.AddRange(MainForm.netKill.Programs.ToArray)
-            My.Settings.Networks.AddRange(MainForm.netKill.Networks.ToArray)
-        End If
-
         My.Settings.Save()
 
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
@@ -28,18 +20,13 @@ Public Class SettingsDialog
     End Sub
 
     Private Sub SettingsDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        If My.Settings.Programs Is Nothing Then
-            My.Settings.Programs = New Specialized.StringCollection
-        End If
-
-        If My.Settings.Networks Is Nothing Then
-            My.Settings.Networks = New Specialized.StringCollection
-        End If
-
         UpdateGUI()
     End Sub
 
+    ''' <summary>
+    ''' Update the GUI so the controls reflect the current settings.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub UpdateGUI()
         chkMinimizeToTray.Checked = My.Settings.MinimizeToTray
         chkSaveProgramsNetworks.Checked = My.Settings.SaveNetworksPrograms
